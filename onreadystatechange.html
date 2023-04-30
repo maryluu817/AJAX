@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Onreadystatechange Example </title>
+		<link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="demo">
+            <h1 style="color: green;">
+                onreadystatechange demo
+            </h1>
+            <h3>
+                The XMLHttpRequest Object onreadystatechange Example
+            </h3>
+            <button type="button"
+                onclick="loadDoc()">
+                onreadystatechange demo
+            </button>
+        </div>
+      
+        <script>
+            function loadDoc() {
+                const xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+      
+                    // Only when readyState is 4 and status as 200,
+                    // we can get proper response
+                    if(this.readyState == 4 && this.status == 200) {
+                        document.getElementById("demo").innerHTML
+                            = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", "message.html");
+                xmlhttp.send();
+            }
+        </script>
+    </body>
+</html>
